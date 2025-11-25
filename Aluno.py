@@ -23,6 +23,14 @@ class Aluno:
     def nome(self):
         self.__nome
 
+    @property 
+    def media(self):
+        return self.__media 
+    def calcular_media(self): 
+        """Calcular a media atraves da função (adicionar_notas), complicado viu"""
+        if self.__notas:
+            self.__media = sum(self.__notas) / len(self.__notas)
+
     @property
     def notas(self):
         return self.__notas
@@ -36,18 +44,12 @@ class Aluno:
             print ("Nota invalida, Não é possivel colocar nota acima de 10 para o aluno ")
         if valor >= 0 and valor <= 10:
             self.__notas.append(valor)
-            self.calcular_media
+            self.calcular_media() 
             print ("Nota Adicionada com sucesso")
             return True 
-    
-    @property 
-    def media(self):
-        return self.__media 
-    def calcular_media(self): 
-        """Calcular a media atraves da função (adicionar_notas), complicado viu"""
-        if self.__notas:
-            self.__media = sum(self.__notas) / len(self.__notas)
+    def situacao(self): #Nao ta dando certo de nenhuma forma, vo ver essa 
+        self.calcular_media() #Tentando chamar a media 
         if self.__media >= 7:
-            print ("Aluno Aprovado!")
+            return "Aluno Aprovado!"
         elif self.__media < 7:
-            print ("Aluno Reprovado!") 
+            return "Aluno Reprovado!"
